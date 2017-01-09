@@ -67,8 +67,9 @@
          "web" : "https://github.com/thedatahub/Catmandu-VIAF"
       }
    },
-   "version" : "0.01",
+   "version" : "0.02",
    "x_contributors" : [
+      "Pieter De Praetere <pieter.de.praetere@helptux.be>",
       "Pieter De Praetere <pieter@packed.be>"
    ],
    "x_serialization_backend" : "Cpanel::JSON::XS version 3.0217"
