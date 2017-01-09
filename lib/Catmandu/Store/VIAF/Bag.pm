@@ -6,8 +6,7 @@ use warnings;
 use Catmandu::Sane;
 use Moo;
 
-use Catmandu::VIAF::API::ID;
-use Catmandu::VIAF::API::Extract;
+use Catmandu::VIAF::API;
 
 with 'Catmandu::Bag';
 
@@ -17,15 +16,12 @@ sub generator {
 
 sub get {
     my ($self, $id) = @_;
-    my $sr = Catmandu::VIAF::API::ID->new(
-        viafid => $id
-    );
-    my $e = Catmandu::VIAF::API::Extract->new(
-        api_response  => $sr->result,
+    my $a = Catmandu::VIAF::API->new(
+        term          => $id,
         lang          => $self->store->lang,
         fallback_lang => $self->store->fallback_lang
     );
-    return $e->single();
+    return $a->id();
 }
 
 sub add {

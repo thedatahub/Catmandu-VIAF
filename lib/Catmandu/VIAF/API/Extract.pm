@@ -6,8 +6,6 @@ use warnings;
 use Catmandu::Sane;
 use Moo;
 
-use Data::Dumper qw(Dumper);
-
 has api_response  => (is => 'ro', required => 1);
 has lang          => (is => 'ro', default => 'nl-NL');
 has fallback_lang => (is => 'ro', default => 'en-US');
@@ -29,6 +27,8 @@ sub single {
         'skos:prefLabel' => $self->pref_label($person),
         'dcterms:identifier' => $person->{'dcterms:identifier'}->{'content'},
         'schema:description' => $person->{'schema:description'},
+        'schema:birthDate' => $person->{'schema:birthDate'},
+        'schema:deathDate' => $person->{'schema:deathDate'},
         'guid' => $person->{'rdf:about'}
     };
 }

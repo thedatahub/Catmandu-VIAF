@@ -14,6 +14,8 @@ has lang  => (is => 'ro', default => 'nl-NL');
 
 sub json {
     my ($self) = @_;
+    my $tree = decode_json($self->items);
+    return $tree;
 }
 
 sub xml {
