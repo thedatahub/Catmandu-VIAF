@@ -46,3 +46,84 @@ sub emit {
 
 1;
 __END__
+
+=encoding utf-8
+
+=head1 NAME
+
+=for html <a href="https://travis-ci.org/thedatahub/Catmandu-VIAF"><img src="https://travis-ci.org/thedatahub/Catmandu-VIAF.svg?branch=master"></a>
+
+Catmandu::Fix::viaf_match - Perform a search for a name in VIAF
+
+=head1 SYNOPSIS
+
+  viaf_search(authorName, -lang:'nl-NL', -fallback_lang:'en-US')
+
+
+=head1 DESCRIPTION
+
+Perform a search for a name. Both I<mainHeadingEl> and the
+I<local.personalNames> are queried. The fix will return
+the I<prefLabel> in the provided C<lang>, or C<fallback_lang> if one
+in C<lang> does not exist. If C<fallback_lang> also doesn't exist, the
+I<prefLabel> will be empty.
+
+The fix returns a list, with elements in the following form:
+
+  {
+    'dcterms:identifier' => 'The identifier',
+    'guid'               => 'The VIAF URL',
+    'schema:birthDate'   => 'Birth date, if provided',
+    'schema:deathDate'   => 'Death date, if provided',
+    'schema:description' => 'Description, if provided',
+    'skos:prefLabel'     => 'prefLabel, in lang or fallback_lang'
+  }
+
+=head2 PARAMETERS
+
+=head3 Required parameters
+
+=over
+
+=item C<path>
+
+Path to the name.
+
+=back
+
+=head3 Optional parameters
+
+=over
+
+=item C<lang>
+
+Language of the returned C<skos:prefLabel>. Falls back to
+C<fallback_lang> if none was found. Use L<IETF language tags|https://en.wikipedia.org/wiki/IETF_language_tag>.
+
+=item C<fallback_lang>
+
+Fallback language.
+
+=back
+
+=head1 AUTHOR
+
+Pieter De Praetere E<lt>pieter at packed.be E<gt>
+
+=head1 COPYRIGHT
+
+Copyright 2017- PACKED vzw
+
+=head1 LICENSE
+
+This library is free software; you can redistribute it and/or modify
+it under the same terms as Perl itself.
+
+=head1 SEE ALSO
+
+L<Catmandu>
+L<Catmandu::VIAF>
+L<Catmandu::Store::VIAF>
+L<Catmandu::Fix::viaf_match>
+
+=cut
