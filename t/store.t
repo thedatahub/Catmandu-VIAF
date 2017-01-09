@@ -7,7 +7,7 @@ use Catmandu::Fix;
 my $pkg;
 
 BEGIN {
-    $pkg = 'Catmandu::Store::AAT';
+    $pkg = 'Catmandu::Store::VIAF';
     use_ok $pkg;
 }
 
