@@ -67,6 +67,8 @@ C<fallback_lang> if none was found. Use L<IETF language tags|https://en.wikipedi
 
 Fallback language.
 
+=back
+
 =head1 AUTHOR
 
 Pieter De Praetere E<lt>pieter at packed.be E<gt>
