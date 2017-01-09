@@ -6,8 +6,10 @@ use warnings;
 use Catmandu::Sane;
 use Moo;
 
+use Data::Dumper qw(Dumper);
+
 use REST::Client;
-use Catmandu::VIAF::RDF;
+use Catmandu::VIAF::API::Parse;
 
 has viafid => (is => 'ro', required => 1);
 
@@ -37,8 +39,10 @@ sub _build_result {
             });
         return [];
     }
-    my $parser = Catmandu::VIAF::RDF->new(item => $response->responseContent());
-    return $parser->result;
+    my $rdf = $response->responseContent();
+    my $document = sprintf('<?xml version="1.0" encoding="UTF-8"?>%s', $rdf);
+    my $parser = Catmandu::VIAF::API::Parse->new(items => $document);
+    return $parser->xml();
 }
 
 1;

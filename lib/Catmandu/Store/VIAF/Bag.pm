@@ -7,6 +7,7 @@ use Catmandu::Sane;
 use Moo;
 
 use Catmandu::VIAF::API::ID;
+use Catmandu::VIAF::API::Extract;
 
 with 'Catmandu::Bag';
 
@@ -19,7 +20,12 @@ sub get {
     my $sr = Catmandu::VIAF::API::ID->new(
         viafid => $id
     );
-    return $sr->result;
+    my $e = Catmandu::VIAF::API::Extract->new(
+        api_response  => $sr->result,
+        lang          => $self->store->lang,
+        fallback_lang => $self->store->fallback_lang
+    );
+    return $e->single();
 }
 
 sub add {
