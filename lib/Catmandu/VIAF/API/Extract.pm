@@ -42,20 +42,26 @@ sub pref_label {
         $description->{'skos:prefLabel'} = [$description->{'skos:prefLabel'}];
     }
     foreach my $label (@{$description->{'skos:prefLabel'}}) {
-        if ($label->{'xml:lang'} eq $self->lang) {
-            $prefLabel = $label->{'content'};
-            last;
-        }
-        if ($label->{'xml:lang'} eq $self->fallback_lang) {
-            $prefLabel_fallback = $label->{'content'};
+        if (exists($label->{'xml:lang'})) {
+            if ($label->{'xml:lang'} eq $self->lang) {
+                $prefLabel = $label->{'content'};
+                last;
+            }
+            if ($label->{'xml:lang'} eq $self->fallback_lang) {
+                $prefLabel_fallback = $label->{'content'};
+            }
+        } else {
+            $prefLabel_nolang = $label->{'content'};
         }
     }
 
-    if (!defined($prefLabel)) {
-        # No guarantee that this isn't undefined
+    if (defined($prefLabel)) {
+        return $prefLabel;
+    } elsif (defined($prefLabel_fallback)) {
         return $prefLabel_fallback;
     } else {
-        return $prefLabel;
+        # No guarantee that this isn't undefined
+        return $prefLabel_nolang;
     }
 }
 
@@ -63,22 +69,29 @@ sub schema_name {
     my ($self, $description) = @_;
     my $name;
     my $name_fallback;
+    my $name_nolang;
     if (ref($description->{'schema:name'}) ne 'ARRAY') {
         $description->{'schema:name'} = [$description->{'schema:name'}];
     }
     foreach my $s_name (@{$description->{'schema:name'}}) {
-        if ($s_name->{'xml:lang'} eq $self->lang) {
-            $name = $s_name->{'content'};
-            last;
-        }
-        if ($s_name->{'xml:lang'} eq $self->fallback_lang) {
-            $name_fallback = $s_name->{'content'};
+        if (exists($s_name->{'xml:lang'})) {
+            if ($s_name->{'xml:lang'} eq $self->lang) {
+                $name = $s_name->{'content'};
+                last;
+            }
+            if ($s_name->{'xml:lang'} eq $self->fallback_lang) {
+                $name_fallback = $s_name->{'content'};
+            }
+        } else {
+            $name_nolang = $s_name->{'content'};
         }
     }
-    if (!defined($name)) {
+    if (defined($name)) {
+        return $name;
+    } elsif (defined($name_fallback)) {
         return $name_fallback;
     } else {
-        return $name;
+        return $name_nolang;
     }
 }
 
