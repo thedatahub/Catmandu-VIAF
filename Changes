@@ -2,6 +2,9 @@ Revision history for Catmandu-VIAF
 
 {{$NEXT}}
 
+0.04  2017-01-10 14:25:54 UTC
+	- Bugfix: removed empty string comparisons
+
 0.03  2017-01-10 14:04:37 UTC
         - Bugfix: non-existing IDs now return an empty result set
 
