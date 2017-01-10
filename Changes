@@ -1,6 +1,8 @@
 Revision history for Catmandu-VIAF
 
 {{$NEXT}}
+
+0.03  2017-01-10 14:04:37 UTC
         - Bugfix: non-existing IDs now return an empty result set
 
 0.02  2017-01-09 14:41:06 UTC
