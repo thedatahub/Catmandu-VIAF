@@ -30,17 +30,21 @@ sub _build_result {
     my $response = $self->client->get($url);
 
     if (!$response->is_success) {
-        Catmandu::HTTPError->throw({
-            code             => $response->code,
-            message          => $response->status_line,
-            url              => $response->request->uri,
-            method           => $response->request->method,
-            request_headers  => [],
-            request_body     => $response->request->decoded_content,
-            response_headers => [],
-            response_body    => $response->decoded_content
-        });
-        return [];
+        if ($response->code == 404) {
+            return {};
+        } else {
+            Catmandu::HTTPError->throw({
+                code             => $response->code,
+                message          => $response->status_line,
+                url              => $response->request->uri,
+                method           => $response->request->method,
+                request_headers  => [],
+                request_body     => $response->request->decoded_content,
+                response_headers => [],
+                response_body    => $response->decoded_content
+            });
+            return {};
+        }
     }
     my $rdf = $response->decoded_content;
     my $document = sprintf('<?xml version="1.0" encoding="UTF-8"?>%s', $rdf);

@@ -34,13 +34,17 @@ sub match {
     my $self = shift;
     my $query = sprintf('local.mainHeadingEl exact "%s" and local.personalNames = "%s"', $self->term, $self->term);
     my $api_q = Catmandu::VIAF::API::Query->new(query => $query, lang => $self->lang, fallback_lang => $self->fallback_lang);
-    my $result = shift @{$api_q->results};
-    my $e = Catmandu::VIAF::API::Extract->new(
-            api_response  => $result,
-            lang          => $self->lang,
-            fallback_lang => $self->fallback_lang
-    );
-    return $e->single();
+    if (scalar @{$api_q->results} >= 1) {
+        my $result = shift @{$api_q->results};
+        my $e = Catmandu::VIAF::API::Extract->new(
+                api_response  => $result,
+                lang          => $self->lang,
+                fallback_lang => $self->fallback_lang
+        );
+        return $e->single();
+    } else {
+        return {};
+    }
 }
 
 sub id {

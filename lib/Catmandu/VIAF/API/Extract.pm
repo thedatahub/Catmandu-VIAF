@@ -24,7 +24,7 @@ sub single {
         return {};
     }
     return {
-        'skos:prefLabel' => $self->pref_label($person),
+        'skos:prefLabel' => $self->name($person),
         'dcterms:identifier' => $person->{'dcterms:identifier'}->{'content'},
         'schema:description' => $person->{'schema:description'},
         'schema:birthDate' => $person->{'schema:birthDate'},
@@ -37,6 +37,10 @@ sub pref_label {
     my ($self, $description) = @_;
     my $prefLabel;
     my $prefLabel_fallback;
+    my $prefLabel_nolang;
+    if (ref($description->{'skos:prefLabel'}) ne 'ARRAY') {
+        $description->{'skos:prefLabel'} = [$description->{'skos:prefLabel'}];
+    }
     foreach my $label (@{$description->{'skos:prefLabel'}}) {
         if ($label->{'xml:lang'} eq $self->lang) {
             $prefLabel = $label->{'content'};
@@ -53,6 +57,38 @@ sub pref_label {
     } else {
         return $prefLabel;
     }
+}
+
+sub schema_name {
+    my ($self, $description) = @_;
+    my $name;
+    my $name_fallback;
+    if (ref($description->{'schema:name'}) ne 'ARRAY') {
+        $description->{'schema:name'} = [$description->{'schema:name'}];
+    }
+    foreach my $s_name (@{$description->{'schema:name'}}) {
+        if ($s_name->{'xml:lang'} eq $self->lang) {
+            $name = $s_name->{'content'};
+            last;
+        }
+        if ($s_name->{'xml:lang'} eq $self->fallback_lang) {
+            $name_fallback = $s_name->{'content'};
+        }
+    }
+    if (!defined($name)) {
+        return $name_fallback;
+    } else {
+        return $name;
+    }
+}
+
+sub name {
+    my ($self, $description) = @_;
+    my $name = $self->pref_label($description);
+    if (!defined($name)) {
+        $name = $self->schema_name($description);
+    }
+    return $name;
 }
 
 sub is_person {
