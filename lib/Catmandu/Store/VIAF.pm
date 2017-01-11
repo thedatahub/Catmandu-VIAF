@@ -45,7 +45,7 @@ Catmandu::Store::VIAF - Retrieve items from VIAF
 
     my $store = Catmandu->store('VIAF')->bag;
 
-    my $item = $store->get('300031023334123618');
+    my $item = $store->get('102333412');
 
     print $item->{'skos:prefLabel'} , "\n";  # Jane Austen
 
