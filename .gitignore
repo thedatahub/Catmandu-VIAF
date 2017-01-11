@@ -6,3 +6,5 @@ MYMETA.*
 !META.json
 /.prove
 .DS_Store
+local
+cpanfile.snapshot

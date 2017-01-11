@@ -1,10 +1,10 @@
 {
-   "abstract" : "Retrieve items from VIAF",
+   "abstract" : "Retrieve items from the VIAF authority file",
    "author" : [
       "Pieter De Praetere <pieter at packed.be >"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Milla version v1.0.17, Dist::Zilla version 6.008, CPAN::Meta::Converter version 2.150010",
+   "generated_by" : "Dist::Zilla version 5.039, Dist::Milla version v1.0.15, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "perl_5"
    ],
@@ -15,12 +15,12 @@
    "name" : "Catmandu-VIAF",
    "no_index" : {
       "directory" : [
-         "eg",
-         "examples",
+         "t",
+         "xt",
          "inc",
          "share",
-         "t",
-         "xt"
+         "eg",
+         "examples"
       ]
    },
    "prereqs" : {
@@ -31,7 +31,7 @@
       },
       "develop" : {
          "requires" : {
-            "Dist::Milla" : "v1.0.17",
+            "Dist::Milla" : "v1.0.15",
             "Test::Pod" : "1.41"
          }
       },
@@ -69,9 +69,9 @@
    },
    "version" : "0.04",
    "x_contributors" : [
+      "Patrick Hochstenbach <patrick.hochstenbach@ugent.be>",
       "Pieter De Praetere <pieter.de.praetere@helptux.be>",
       "Pieter De Praetere <pieter@packed.be>"
-   ],
-   "x_serialization_backend" : "Cpanel::JSON::XS version 3.0217"
+   ]
 }
 

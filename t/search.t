@@ -11,14 +11,18 @@ BEGIN {
     use_ok $pkg;
 }
 
-my $record = {
-    'authorName' => 'Jane Austen'
-};
+SKIP : {
+    skip "Need network set \$ENV{RELEASE_TESTING}",1 unless $ENV{RELEASE_TESTING};
 
-my $fixer = Catmandu::Fix->new(fixes => ['viaf_search(authorName)']);
+    my $record = {
+        'authorName' => 'Jane Austen'
+    };
 
-$fixer->fix($record);
+    my $fixer = Catmandu::Fix->new(fixes => ['viaf_search(authorName)']);
 
-isa_ok($record->{'authorName'}, 'ARRAY');
+    $fixer->fix($record);
+
+    isa_ok($record->{'authorName'}, 'ARRAY');
+}
 
 done_testing 2;
