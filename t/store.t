@@ -11,25 +11,29 @@ BEGIN {
     use_ok $pkg;
 }
 
-my $record = {
-    'authorName' => '102333412'
-};
+SKIP : {
+    skip "Need network set \$ENV{RELEASE_TESTING}",1 unless $ENV{RELEASE_TESTING};
 
-my $fixer = Catmandu::Fix->new(fixes => ['lookup_in_store(authorName, VIAF)']);
+    my $record = {
+        'authorName' => '102333412'
+    };
 
-$fixer->fix($record);
+    my $fixer = Catmandu::Fix->new(fixes => ['lookup_in_store(authorName, VIAF)']);
 
-my $expected = {
-    'authorName' => {
-        'dcterms:identifier' => '102333412',
-        'guid' => 'http://viaf.org/viaf/102333412',
-        'schema:birthDate' => '1775-12-16',
-        'schema:deathDate' => '1817-07-18',
-        'schema:description' => 'English novelist',
-        'skos:prefLabel' => 'Jane Austen'
-    }
-};
+    $fixer->fix($record);
 
-is_deeply $record, $expected;
+    my $expected = {
+        'authorName' => {
+            'dcterms:identifier' => '102333412',
+            'guid' => 'http://viaf.org/viaf/102333412',
+            'schema:birthDate' => '1775-12-16',
+            'schema:deathDate' => '1817-07-18',
+            'schema:description' => 'English novelist',
+            'skos:prefLabel' => 'Jane Austen'
+        }
+    };
+
+    is_deeply $record, $expected;
+}
 
 done_testing 2;
