@@ -23,9 +23,10 @@ sub single {
     if (ref($person) ne "HASH") {
         return {};
     }
+
     return {
         'skos:prefLabel' => $self->name($person),
-        'dcterms:identifier' => $person->{'dcterms:identifier'}->{'content'},
+        'dcterms:identifier' => $person->{'dcterms:identifier'},
         'schema:description' => $person->{'schema:description'},
         'schema:birthDate' => $person->{'schema:birthDate'},
         'schema:deathDate' => $person->{'schema:deathDate'},
