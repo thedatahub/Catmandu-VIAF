@@ -35,18 +35,16 @@ Catmandu::VIAF - Retrieve items from the VIAF authority file
 - [Catmandu::Fix::viaf\_search](https://metacpan.org/pod/Catmandu::Fix::viaf_search)
 - [Catmandu::VIAF::API](https://metacpan.org/pod/Catmandu::VIAF::API)
 
-# AUTHOR
+# AUTHORS
 
-Pieter De Praetere &lt;pieter at packed.be >
+Matthias Vandermaesen <matthias.vandermaesen@vlaamsekunstcollectie.be>
+Pieter De Praetere <pieter@packed.be>
 
-# COPYRIGHT
+# COPYRIGHT AND LICENSE
 
-Copyright 2017- PACKED vzw
+This software is copyright (c) 2017 by PACKED, vzw, Vlaamse Kunstcollectie, vzw.
 
-# LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License, Version 3, June 2007.
 
 # SEE ALSO
 
