@@ -2,6 +2,8 @@ Revision history for Catmandu-VIAF
 
 {{$NEXT}}
 
+	- Added: viaf_match_id fix
+
 0.04  2017-01-10 14:25:54 UTC
 	- Bugfix: removed empty string comparisons
 
