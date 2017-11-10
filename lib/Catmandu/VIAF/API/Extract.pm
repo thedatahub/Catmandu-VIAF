@@ -25,14 +25,7 @@ sub single {
         return {};
     }
 
-    return {
-        'skos:prefLabel' => $self->name($person),
-        'dcterms:identifier' => $person->{'dcterms:identifier'},
-        'schema:description' => $person->{'schema:description'},
-        'schema:birthDate' => $person->{'schema:birthDate'},
-        'schema:deathDate' => $person->{'schema:deathDate'},
-        'guid' => $person->{'rdf:about'}
-    };
+    return $person;
 }
 
 sub pref_label {

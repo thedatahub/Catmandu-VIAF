@@ -2,6 +2,7 @@ Revision history for Catmandu-VIAF
 
 {{$NEXT}}
 
+	- Changed: return the RDF:Description hash instead of a custom hash.
 	- Added: viaf_match_id fix
 
 0.04  2017-01-10 14:25:54 UTC
