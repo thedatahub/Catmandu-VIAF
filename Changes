@@ -2,6 +2,8 @@ Revision history for Catmandu-VIAF
 
 {{$NEXT}}
 
+0.05  2017-11-10 12:57:05 CET
+
 	- Changed: dist.ini release via dzil
 	- Added: GPLv3 licensing
 	- Changed: return the RDF:Description hash instead of a custom hash.
