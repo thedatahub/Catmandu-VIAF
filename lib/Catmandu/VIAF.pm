@@ -2,7 +2,7 @@ package Catmandu::VIAF;
 
 use strict;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 1;
 __END__
@@ -51,18 +51,16 @@ Catmandu::VIAF - Retrieve items from the VIAF authority file
 
 =back
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Pieter De Praetere E<lt>pieter at packed.be E<gt>
+Matthias Vandermaesen <matthias.vandermaesen@vlaamsekunstcollectie.be>
+Pieter De Praetere <pieter@packed.be>
 
-=head1 COPYRIGHT
+=head1 COPYRIGHT AND LICENSE
 
-Copyright 2017- PACKED vzw
+This software is copyright (c) 2017 by PACKED, vzw, Vlaamse Kunstcollectie, vzw.
 
-=head1 LICENSE
-
-This library is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+This is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License, Version 3, June 2007.
 
 =head1 SEE ALSO
 

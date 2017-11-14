@@ -1,12 +1,12 @@
 {
    "abstract" : "Retrieve items from the VIAF authority file",
    "author" : [
-      "Pieter De Praetere <pieter at packed.be >"
+      "Matthias Vandermaesen <matthias.vandermaesen@vlaamsekunstcollectie.be>"
    ],
    "dynamic_config" : 0,
    "generated_by" : "Dist::Milla version v1.0.18, Dist::Zilla version 6.008, CPAN::Meta::Converter version 2.150001",
    "license" : [
-      "perl_5"
+      "gpl_3"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -24,9 +24,14 @@
       ]
    },
    "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Module::Build" : "0.28"
+         }
+      },
       "configure" : {
          "requires" : {
-            "Module::Build::Tiny" : "0.034"
+            "Module::Build" : "0.28"
          }
       },
       "develop" : {
@@ -67,7 +72,7 @@
          "web" : "https://github.com/thedatahub/Catmandu-VIAF"
       }
    },
-   "version" : "0.04",
+   "version" : "0.05",
    "x_contributors" : [
       "Patrick Hochstenbach <patrick.hochstenbach@ugent.be>",
       "Pieter De Praetere <pieter.de.praetere@helptux.be>",

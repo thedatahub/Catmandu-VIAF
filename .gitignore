@@ -8,3 +8,4 @@ MYMETA.*
 .DS_Store
 local
 cpanfile.snapshot
+/blib
