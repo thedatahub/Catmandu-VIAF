@@ -110,7 +110,7 @@ sub is_person {
         $rdf_types = [$rdf_types];
     }
     foreach my $rdf_type (@{$rdf_types}) {
-        if ($rdf_type->{'rdf:resource'} eq 'http://schema.org/Person') {
+        if ($rdf_type->{'rdf:resource'} && $rdf_type->{'rdf:resource'} eq 'http://schema.org/Person') {
             return 1;
             last;
         }
